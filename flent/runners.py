@@ -1772,6 +1772,33 @@ class VoipRunner(DelegatingRunner):
 
         super(VoipRunner, self).check()
 
+class CsaRunner(DelegatingRunner):
+
+    def check(self):
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='csa'))
+
+        super(CsaRunner, self).check()
+
+class CsiRunner(DelegatingRunner):
+
+    def check(self):
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='csi'))
+
+        super(CsiRunner, self).check()
+
+class DnsRunner(DelegatingRunner):
+
+    def check(self):
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='dns'))
+
+        super(DnsRunner, self).check()
+
+class TelnetRunner(DelegatingRunner):
+
+    def check(self):
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='telnet'))
+
+        super(TelnetRunner, self).check()
 
 class SsRunner(ProcessRunner):
     """Runner for iterated `ss -t -i -p`. Depends on same partitial output

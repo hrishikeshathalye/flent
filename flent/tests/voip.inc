@@ -15,7 +15,7 @@ DATA_SETS['VoIP::loss']           = {'units': 'count', 'runner': 'null'}
 DATA_SETS['VoIP::induced_delay']  = {'units': 'ms', 'runner': 'diff_min', 'apply_to': ['VoIP::delay']}
 
 
-PLOTS['voip_delay']              = {'description': 'VoIP delay and jitter',
+PLOTS['delay']              = {'description': 'Delay and Jitter',
                                     'type': 'timeseries',
                                     'axis_labels': ['One-way delay (ms)'],
                                     'series': [{'data': 'VoIP::delay',
@@ -24,41 +24,41 @@ PLOTS['voip_delay']              = {'description': 'VoIP delay and jitter',
                                                 'label': 'VoIP jitter',
                                                 'color': 'green'}
                                     ]}
-PLOTS['voip_delay_cdf']          = {'description': 'VoIP delay and jitter CDF',
+PLOTS['delay_cdf']          = {'description': 'Delay and Jitter CDF',
                                     'type': 'cdf',
                                     'cutoff': VOIP_CUTOFF,
-                                    'parent': 'voip_delay'}
-PLOTS['voip_delay_box']          = {'description': 'VoIP delay and jitter box plot',
+                                    'parent': 'delay'}
+PLOTS['delay_box']          = {'description': 'Delay and Jitter box plot',
                                     'type': 'box',
                                     'cutoff': VOIP_CUTOFF,
-                                    'parent': 'voip_delay'}
-PLOTS['voip_induced_delay']      = {'description': 'VoIP induced delay CDF',
+                                    'parent': 'delay'}
+PLOTS['induced_delay']      = {'description': 'Induced delay CDF',
                                     'type': 'timeseries',
                                     'axis_labels': ['Induced one-way delay (ms)'],
                                     'series': [{'data': 'VoIP::induced_delay',
-                                                'label': 'VoIP induced delay'}]}
-PLOTS['voip_induced_delay_cdf']  = {'description': 'VoIP induced delay box plot',
+                                                'label': 'Induced delay'}]}
+PLOTS['induced_delay_cdf']  = {'description': 'Induced delay box plot',
                                     'type': 'cdf',
                                     'cutoff': VOIP_CUTOFF,
-                                    'parent': 'voip_induced_delay'}
-PLOTS['voip_induced_delay_box']  = {'description': 'VoIP induced delay box plot',
+                                    'parent': 'induced_delay'}
+PLOTS['induced_delay_box']  = {'description': 'Induced delay box plot',
                                     'type': 'box',
                                     'cutoff': VOIP_CUTOFF,
-                                    'parent': 'voip_induced_delay'}
-PLOTS['voip_box_delay_loss']     = {'description': "Box delay/loss combination plot",
+                                    'parent': 'induced_delay'}
+PLOTS['box_delay_loss']     = {'description': "Box delay/loss combination plot",
                                     'type': 'box_combine',
                                     'cutoff': VOIP_CUTOFF,
                                     'dual_axes': True,
                                     'axis_labels': ['Mean induced delay (ms)', 'Mean loss rate'],
                                     'series': [{'data': 'VoIP::delay',
-                                                'label': 'Induced VoIP delay',
+                                                'label': 'Induced delay',
                                                 'combine_mode': 'mean_span',
                                                 'axis': 1},
                                                {'data': 'VoIP::loss',
-                                                'label': 'VoIP loss rate',
+                                                'label': 'Loss rate',
                                                 'combine_mode': 'raw_seq_loss',
                                                 'axis': 2}]}
-PLOTS['voip_mos_combine']         = {'description': "VoIP MOS combination plot",
+PLOTS['mos_combine']         = {'description': "MOS combination plot",
                                     'type': 'box_combine',
                                     'cutoff': VOIP_CUTOFF,
                                     'axis_labels': ['MOS value'],
@@ -66,12 +66,12 @@ PLOTS['voip_mos_combine']         = {'description': "VoIP MOS combination plot",
                                                 'label': 'MOS',
                                                 'combine_mode': 'mos'},
                                                ]}
-PLOTS['voip_bitrate']            = {'description': 'VoIP bitrate',
+PLOTS['bitrate']            = {'description': 'Bitrate',
                                     'type': 'timeseries',
                                     'series': [{'data': 'VoIP::bitrate',
                                                 'label': 'Bitrate'}
                                     ]}
-PLOTS['voip_mos_upload']          = {'description': "VoIP MOS and upload throughput plot",
+PLOTS['mos_upload']          = {'description': "MOS and upload throughput plot",
                                      'type': 'box_combine',
                                      'cutoff': VOIP_CUTOFF,
                                      'axis_labels': ['MOS value', 'Mbit/s'],
@@ -92,14 +92,14 @@ PLOTS['voip_mos_upload']          = {'description': "VoIP MOS and upload through
                                                  'combine_mode': 'mean',
                                                  'axis': 2},
                                      ]}
-PLOTS['voip_loss']               = {'description': 'VoIP loss',
+PLOTS['loss']               = {'description': 'Loss',
                                     'type': 'timeseries',
                                     'axis_labels': ['Loss count'],
                                     'series': [{'data': 'VoIP::loss',
-                                                'label': 'VoIP loss',
+                                                'label': 'Loss',
                                                 'linestyle': '',
                                                 'marker': '.',}
                                     ]}
-PLOTS['voip_delay_loss']         = {'description': 'VoIP delay and loss plots',
+PLOTS['delay_loss']         = {'description': 'Delay and loss plots',
                                     'type': 'meta',
-                                    'subplots': ('voip_delay', 'voip_loss')}
+                                    'subplots': ('delay', 'loss')}
