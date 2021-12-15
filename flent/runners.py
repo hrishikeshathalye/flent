@@ -1775,28 +1775,35 @@ class VoipRunner(DelegatingRunner):
 class CsaRunner(DelegatingRunner):
 
     def check(self):
-        self.add_child(DitgRunner, **dict(self.runner_args, test_args='csa'))
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='CSa'))
 
         super(CsaRunner, self).check()
 
 class CsiRunner(DelegatingRunner):
 
     def check(self):
-        self.add_child(DitgRunner, **dict(self.runner_args, test_args='csi'))
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='CSi'))
 
         super(CsiRunner, self).check()
+
+class QuakeRunner(DelegatingRunner):
+
+    def check(self):
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='Quake3'))
+
+        super(QuakeRunner, self).check()
 
 class DnsRunner(DelegatingRunner):
 
     def check(self):
-        self.add_child(DitgRunner, **dict(self.runner_args, test_args='dns'))
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='DNS'))
 
         super(DnsRunner, self).check()
 
 class TelnetRunner(DelegatingRunner):
 
     def check(self):
-        self.add_child(DitgRunner, **dict(self.runner_args, test_args='telnet'))
+        self.add_child(DitgRunner, **dict(self.runner_args, test_args='Telnet'))
 
         super(TelnetRunner, self).check()
 
